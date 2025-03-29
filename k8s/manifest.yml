@@ -17,30 +17,16 @@ spec:
       containers:
       - name: app-process-account
         image: polyglotxt/nodejs-aws-process-account:1
-        ports:
-        - containerPort: 8080
         env:
-        - name: NACOS_SERVERADDR
-          value: "18.216.235.222:8848"
-        - name: NACOS_NAMESPACE
-          value: "polyglot"
-        - name: NACOS_IDENTITYKEY
-          value: "nacos"
-        - name: NACOS_IDENTITYVALUE
-          value: "nacos"
-        - name: NACOS_ENV
-          value: "PROD"
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: app-service-process-account
-spec:
-  type: ClusterIP
-  selector:
-    app: service-process-account
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
-    name: http
+        - name: KAFKA_SERVER
+          value: "3.133.60.253:9092"
+        - name: DB_POSTGRES_USER
+          value: "postgres"
+        - name: DB_POSTGRES_PASSWORD
+          value: "Polyglot#3000"
+        - name: DB_POSTGRES_DATABASE_ACCOUNT
+          value: "DB_ACCOUNT"
+        - name: DB_POSTGRES_HOST
+          value: "3.133.60.253"
+        - name: DB_POSTGRES_ACCOUNT_PORT
+          value: "5435"
